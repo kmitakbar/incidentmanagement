@@ -1,5 +1,6 @@
 package com.training.incidentmanagementsystem.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,8 +13,12 @@ public class Customer{
 	private Integer customerId;
 	private String firstName;
 	private String lastName;
+	
+	@Column(unique = true)
 	private String email;
 	private String gender;
+	
+	@Column(unique = true)
 	private String phone;
 	
 	

@@ -1,5 +1,6 @@
 package com.training.incidentmanagementsystem.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,7 +12,11 @@ public class Technician{
 	@GeneratedValue
 	Integer technicianId;
 	String name;
+	
+	@Column(unique = true)
 	String email;
+	
+	@Column(unique = true)
 	String phone;
 	public Integer getTechnicianId() {
 		return technicianId;
