@@ -1,5 +1,7 @@
 package com.training.incidentmanagementsystem.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.training.incidentmanagementsystem.dto.CustomerDto;
+import com.training.incidentmanagementsystem.dto.TeleCallerDto;
 import com.training.incidentmanagementsystem.model.Issue;
 import com.training.incidentmanagementsystem.service.CustomerServiceImpl;
 
@@ -44,5 +47,10 @@ public class CustomerController {
 	@GetMapping("/getissuedetails")
 	public Issue getIssueDetails(@RequestParam Integer issueId) {
 		return null;
+	}
+	
+	@GetMapping("/all")
+	public List<CustomerDto> getAllCustomers(){
+		return customerServiceImpl.getAllCustomers();
 	}
 }
