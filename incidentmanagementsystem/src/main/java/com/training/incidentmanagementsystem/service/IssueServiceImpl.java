@@ -24,4 +24,15 @@ public class IssueServiceImpl {
 	public List<Issue> getIssuesByCustomer(Integer reportedby){
 		return issueRepository.findByReportedBy(reportedby);
 	}
+	
+	public IssuesDto assign(IssuesDto issuesDto) {
+		Issue issue=issueRepository.save(issuesDto.getIssue());
+		issuesDto.setIssue(issue);
+		return issuesDto;
+	}
+
+	public List<Issue> getAllIssues() {
+		// TODO Auto-generated method stub
+		return (List<Issue>) issueRepository.findAll();
+	}
 }

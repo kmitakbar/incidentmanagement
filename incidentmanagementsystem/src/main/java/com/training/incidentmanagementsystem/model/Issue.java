@@ -1,21 +1,55 @@
 package com.training.incidentmanagementsystem.model;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
-public class Issue {
+public class Issue{
 
 	@Id
 	@GeneratedValue
 	Integer issueId;
 	String issueType;
 	String issueDescription;
+	String status;
 	
 	//customerID
 	Integer reportedBy;
 	Integer assignedTechnicianId;
+	
+	@Temporal(TemporalType.DATE)
+	@Column
+	@CreationTimestamp
+	private Date createdDtm;
+	
+	@Temporal(TemporalType.DATE)
+	@Column
+	@CreationTimestamp
+	private Date modifiedDtm;
+
+	public Date getCreatedDtm() {
+		return createdDtm;
+	}
+
+	public void setCreatedDtm(Date createdDtm) {
+		this.createdDtm = createdDtm;
+	}
+
+	public Date getModifiedDtm() {
+		return modifiedDtm;
+	}
+
+	public void setModifiedDtm(Date modifiedDtm) {
+		this.modifiedDtm = modifiedDtm;
+	}
 	public Integer getIssueId() {
 		return issueId;
 	}
@@ -46,11 +80,19 @@ public class Issue {
 	public void setAssignedTechnicianId(Integer assignedTechnicianId) {
 		this.assignedTechnicianId = assignedTechnicianId;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	@Override
 	public String toString() {
 		return "Issue [issueId=" + issueId + ", issueType=" + issueType + ", issueDescription=" + issueDescription
-				+ ", reportedBy=" + reportedBy + ", assignedTechnicianId=" + assignedTechnicianId + "]";
+				+ ", status=" + status + ", reportedBy=" + reportedBy + ", assignedTechnicianId=" + assignedTechnicianId
+				+ "]";
 	}
+	
 	
 	
 }

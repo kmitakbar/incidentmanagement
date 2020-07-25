@@ -21,8 +21,6 @@ public class CustomerController {
 	@Autowired
 	CustomerServiceImpl customerServiceImpl;
 
-	
-
 	@PostMapping("/create")
 	public CustomerDto createCustomer(@RequestBody CustomerDto customer) {
 		try {

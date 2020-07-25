@@ -1,9 +1,15 @@
 package com.training.incidentmanagementsystem.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 public class Customer{
@@ -21,6 +27,32 @@ public class Customer{
 	@Column(unique = true)
 	private String phone;
 	
+	@Temporal(TemporalType.DATE)
+	@Column
+	@CreationTimestamp
+	private Date createdDtm;
+	
+	@Temporal(TemporalType.DATE)
+	@Column
+	@CreationTimestamp
+	private Date modifiedDtm;
+
+	public Date getCreatedDtm() {
+		return createdDtm;
+	}
+
+	public void setCreatedDtm(Date createdDtm) {
+		this.createdDtm = createdDtm;
+	}
+
+	public Date getModifiedDtm() {
+		return modifiedDtm;
+	}
+
+	public void setModifiedDtm(Date modifiedDtm) {
+		this.modifiedDtm = modifiedDtm;
+	}
+
 	
 	public Integer getCustomerId() {
 		return customerId;

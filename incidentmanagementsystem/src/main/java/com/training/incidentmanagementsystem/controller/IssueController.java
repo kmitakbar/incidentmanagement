@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.training.incidentmanagementsystem.dto.IssuesDto;
+import com.training.incidentmanagementsystem.enums.IssueStatus;
 import com.training.incidentmanagementsystem.model.Issue;
 import com.training.incidentmanagementsystem.service.IssueServiceImpl;
 
@@ -23,11 +24,22 @@ public class IssueController {
 
 	@PostMapping("/reportissue")
 	public IssuesDto reportIssue(@RequestBody IssuesDto issuesDto) {
+		issuesDto.getIssue().setStatus(IssueStatus.OPEN.toString());
 		return issueServiceImpl.createIssue(issuesDto);
 	}
 
 	@GetMapping("/getissues")
-	public List<Issue> getAllIssuesReportedByMe(@RequestParam Integer userId) {
+	public List<Issue> getAllIssuesReportedByUser(@RequestParam Integer userId) {
 		return issueServiceImpl.getIssuesByCustomer(userId);
+	}
+	
+	@GetMapping("/all")
+	public List<Issue> getAllIssues() {
+		return issueServiceImpl.getAllIssues();
+	}
+	
+	@PostMapping("/update")
+	public IssuesDto updateIssue(@RequestBody IssuesDto issuesDto) {
+		return issueServiceImpl.assign(issuesDto);
 	}
 }
