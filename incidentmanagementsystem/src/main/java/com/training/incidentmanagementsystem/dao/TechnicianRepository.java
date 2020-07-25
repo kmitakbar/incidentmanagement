@@ -6,4 +6,6 @@ import com.training.incidentmanagementsystem.model.Technician;
 
 public interface TechnicianRepository extends CrudRepository<Technician, Integer> {
 
+	Technician findByEmailAndPhone(String email, String phone);
+
 }

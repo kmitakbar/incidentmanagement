@@ -6,4 +6,6 @@ import com.training.incidentmanagementsystem.model.TeleCaller;
 
 public interface TeleCallerRepository extends CrudRepository<TeleCaller, Integer> {
 
+	TeleCaller findByEmailAndPhone(String email, String phone);
+
 }
